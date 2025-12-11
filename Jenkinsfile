@@ -30,6 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying the application..."
+                echo "this is to check github webhook"
             }
         }
 
