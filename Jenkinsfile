@@ -1,30 +1,37 @@
 pipeline {
-  agent any 
+    agent any
+
     stages {
-      stage ("parallel pipeline") {
-        parallel { 
-          stage('Build') {
+
+        stage('Checkout') {
             steps {
-              sh '''
-              sleep 5
-              echo "Build stage"
-              '''
+                git branch: 'main', url: 'https://github.com/your/repository.git'
             }
-          }
-          stage('Test') {
+        }
+
+        stage('Parallel Build & Test') {
+            parallel {
+                stage('Build') {
+                    steps {
+                        echo "Building the application..."
+                        sh "sleep 5"   // replace with: mvn clean package / npm build
+                    }
+                }
+
+                stage('Run Tests') {
+                    steps {
+                        echo "Running test cases..."
+                        sh "sleep 5"   // replace with: mvn test / npm test
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
             steps {
-              sh '''
-              sleep 5
-              echo "test stage"
-              '''
+                echo "Deploying the application..."
             }
-          }
         }
-      }
-      stage('Deploy') {
-        steps {
-          sh 'sleep5'; echo "delpoys completed"'
-        }
-      }
-    }  
+
+    }
 }
