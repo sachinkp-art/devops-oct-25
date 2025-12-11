@@ -14,14 +14,14 @@ pipeline {
                 stage('Build') {
                     steps {
                         echo "Building the application..."
-                        sh "sleep 5"   // replace with: mvn clean package / npm build
+                        sh "sleep 5"   
                     }
                 }
 
                 stage('Run Tests') {
                     steps {
                         echo "Running test cases..."
-                        sh "sleep 5"   // replace with: mvn test / npm test
+                        sh "sleep 5"   
                     }
                 }
             }
