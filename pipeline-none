@@ -1,0 +1,23 @@
+pipeline {
+    agent none
+        stages {
+            stage('checkout') {
+                steps {
+                    git checkout url:https://github.com/sachinkp-art/devops-oct-25.git
+
+                }
+            }
+            stage('build') {
+                agent any
+                steps {
+                    echo 'build running on any available agent'
+                }
+            }
+            stage('Test') {
+                agent any
+                steps {
+                    echo "Test is running on any available agent"
+                }
+            }
+        }
+}
