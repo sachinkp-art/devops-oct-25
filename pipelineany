@@ -3,7 +3,7 @@ pipeline {
         stages {
             stage('checkout') {
                 steps {
-                    git checkout url:https://github.com/sachinkp-art/devops-oct-25.git
+                    git checkout url:https://github.com/sachinkp-art/devops-oct-25.git/pipelineanybranch
 
                 }
             }
